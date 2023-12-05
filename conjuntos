@@ -1,0 +1,92 @@
+import java.util.ArrayList;
+
+public class Conjuntos {
+    public static ArrayList<Integer> union(ArrayList<Integer> a, ArrayList<Integer> b) {
+        ArrayList<Integer> union = new ArrayList<>(a);
+        for(Integer x : b) {
+            if(!union.contains(x)) {
+                union.add(x);
+            }
+        }
+        return union;
+    }
+
+    public static ArrayList<Integer> unionAB(ArrayList<Integer> a, ArrayList<Integer> b) {
+        ArrayList<Integer> unionAB = new ArrayList<>(a);
+        for(Integer x : b) {
+            if(!unionAB.contains(x)) {
+                unionAB.add(x);
+            }
+        }
+        return unionAB;
+    }
+
+    public static ArrayList<Integer> interseccion(ArrayList<Integer> a, ArrayList<Integer> b) {
+        ArrayList<Integer> interseccion = new ArrayList<>();
+        for(Integer x : a) {
+            if(b.contains(x)) {
+                interseccion.add(x);
+            }
+        }
+        return interseccion;
+    }
+    public static ArrayList<Integer> interseccionCD(ArrayList<Integer> c, ArrayList<Integer> d) {
+        ArrayList<Integer> interseccionCD = new ArrayList<>();
+        for(Integer x : c) {
+            if(d.contains(x)) {
+                interseccionCD.add(x);
+            }
+        }
+        return interseccionCD;
+    }
+
+    public static ArrayList<Integer> interseccionDC(ArrayList<Integer> b, ArrayList<Integer> c) {
+        ArrayList<Integer> interseccionDC = new ArrayList<>();
+        for(Integer x : b) {
+            if(c.contains(x)) {
+                interseccionDC.add(x);
+            }
+        }
+        return interseccionDC;
+    }
+
+    public static ArrayList<Integer> interseccionFG(ArrayList<Integer> f, ArrayList<Integer> g) {
+        ArrayList<Integer> interseccionFG = new ArrayList<>();
+        for(Integer x : f) {
+            if(g.contains(x)) {
+                interseccionFG.add(x);
+            }
+        }
+        return interseccionFG;
+    }
+
+    public static ArrayList<Integer> complemento(ArrayList<Integer> a, ArrayList<Integer> c) {
+        ArrayList<Integer> complemento = new ArrayList<>(c);
+        complemento.removeAll(a);
+        return complemento;
+    }
+
+    public static ArrayList<Integer> combinarOperaciones(ArrayList<Integer> a, ArrayList<Integer> b,
+                                                         ArrayList<Integer> c, ArrayList<Integer> d) {
+        ArrayList<Integer> union = unionAB(a, b);
+        ArrayList<Integer> interseccion = interseccionCD(c, d);
+        return interseccion(union, interseccion);
+    }
+
+    public static ArrayList<Integer> operacionesCombinar(ArrayList<Integer> a, ArrayList<Integer> b,
+                                                         ArrayList<Integer> c, ArrayList<Integer> d) {
+        ArrayList<Integer> interseccion = interseccionCD(b, c);
+        ArrayList<Integer> union = union(a, interseccionCD(b, c));
+        return union;
+    }
+
+    public static ArrayList<Integer> cOperaciones(ArrayList<Integer> a, ArrayList<Integer> b,
+                                                  ArrayList<Integer> c, ArrayList<Integer> d, ArrayList<Integer> f, ArrayList<Integer> g) {
+        ArrayList<Integer> union = unionAB(a, b);
+        ArrayList<Integer> interseccion = interseccionCD(c, d);
+        ArrayList<Integer> interseccion2 = interseccionFG(f, g);
+        ArrayList<Integer> resultado = new ArrayList<>(union);
+        resultado.removeAll(interseccion2);
+        return resultado;
+    }
+}

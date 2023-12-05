@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class TeoriadeConjuntos {
+    public static void main(String[] args) {
+        ArrayList<Integer> a = new ArrayList<>();
+        Collections.addAll(a, 1, 3, 5, 7, 9);
+
+        ArrayList<Integer> b = new ArrayList<>();
+        Collections.addAll(b, 2, 4, 6 ,8 ,10);
+
+        ArrayList<Integer> c = new ArrayList<>();
+        Collections.addAll(c, 5, 7, 8, 9);
+
+        ArrayList<Integer> d = new ArrayList<>();
+        Collections.addAll(d, 5, 7, 10, 11, 12);
+
+        ArrayList<Integer> f = new ArrayList<>();
+        Collections.addAll(f, 2, 5);
+
+        ArrayList<Integer> g = new ArrayList<>();
+        Collections.addAll(g, 2, 5);
+
+        ArrayList<Integer> universo = new ArrayList<>();
+        Collections.addAll(universo, 1, 2, 3, 4, 5);
+
+        System.out.println("UNION de A con B: " + Conjuntos.union(a, b));
+        System.out.println("UNION de A con B INTERSECCION C: " + Conjuntos.interseccion(c, d));
+        System.out.println("COMPLEMENTO de A: " + Conjuntos.complemento(a, c));
+        System.out.println("(A UNION B INTERSECCION C): " + Conjuntos.operacionesCombinar(a, b, a, b));
+        System.out.println("(A UNION B) INTERSECCION (C INTERSECCION D): " + Conjuntos.combinarOperaciones(a, b, a, b));
+        System.out.println("(A UNION B)  (C INTERSECCION D) - (F INTERSECCION G): " + 
+        Conjuntos.cOperaciones(a, b, c, d, f, g));
+    }
+}
